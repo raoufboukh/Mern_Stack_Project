@@ -29,6 +29,8 @@ app.post("/books", async (req, res) => {
   }
 });
 
+
+// get all books 
 app.get("/books", async (req, res) => {
   try {
     const books = await Book.find({});
@@ -41,6 +43,20 @@ app.get("/books", async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 });
+
+
+// get one book by id
+app.get("/books/:id", async (req, res) => {
+  try {
+    const {id} = req.params;
+    const book = await Book.find({_id: id});
+    return res.status(200).send(book);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ message: err.message });
+  }
+});
+
 
 mongoose
   .connect(DbUrl)
