@@ -58,6 +58,22 @@ app.get("/books/:id", async (req, res) => {
 });
 
 
+//Route for update a book
+app.put('/books/:id', async(req,res) => {
+    try{
+        if (!req.body.title || !req.body.author || !req.body.publishYear) {
+          return res.status(400).send("All fields are required");
+        }
+        const {id} = req.params;
+        const book = await Book.findByIdAndUpdate(id,req.body);
+        return res.status(200).send({ message: "Update Success" });
+    }catch(err){
+        console.log(err);
+        return res.status(500).send({message:err.message})
+    }
+})
+
+
 mongoose
   .connect(DbUrl)
   .then(() => {
