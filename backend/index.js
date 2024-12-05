@@ -7,6 +7,17 @@ const app = express();
 
 app.use(express.json());
 
+// Middelware for handling CORS POLICY
+// option 1: allow all origins with default of cors(*)
+app.use(cors());
+
+// option 2: allow custom origins
+app.use(cors({
+  origin:'',
+  methods:['GET','POST','PUT','DELETE'],
+  allowedHeaders: ['Content-Type']
+}))
+
 // app.get("/", (req, res) => {
 //   console.log(req);
 //   res.status(200).send("Hello World");
