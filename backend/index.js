@@ -2,6 +2,7 @@ import express from "express";
 import { PORT, DbUrl } from "./config.js";
 import mongoose from "mongoose";
 import routes from "./routes/routes.js";
+import cors from 'cors';
 
 const app = express();
 
@@ -12,11 +13,11 @@ app.use(express.json());
 app.use(cors());
 
 // option 2: allow custom origins
-app.use(cors({
-  origin:'',
-  methods:['GET','POST','PUT','DELETE'],
-  allowedHeaders: ['Content-Type']
-}))
+// app.use(cors({
+//   origin:'',
+//   methods:['GET','POST','PUT','DELETE'],
+//   allowedHeaders: ['Content-Type']
+// }))
 
 // app.get("/", (req, res) => {
 //   console.log(req);
