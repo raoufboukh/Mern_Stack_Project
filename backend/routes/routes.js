@@ -26,7 +26,7 @@ router.route("/").get(async (req, res) => {
     const books = await Book.find({});
     return res.status(200).send({
       count: books.length,
-      books: [...books],
+      books: books,
     });
   } catch (err) {
     console.log(err);
