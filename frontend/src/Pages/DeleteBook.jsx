@@ -12,7 +12,7 @@ const DeleteBook = () => {
   const { enqueueSnackbar } = useSnackbar();
   const handleSaveBook = () => {
     axios
-      .delete(`http://localhost:5555/books/${id}`)
+      .delete(`https://mern-stack-project-oika.vercel.app/books/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book deleted successfully", { variant: "success" });
