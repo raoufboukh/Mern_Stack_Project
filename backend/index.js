@@ -1,8 +1,10 @@
 import express from "express";
-import { PORT, DbUrl } from "./config.js";
 import mongoose from "mongoose";
 import routes from "./routes/routes.js";
-import cors from 'cors';
+import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -25,9 +27,9 @@ app.use(cors());
 // });
 
 app.use("/books", routes);
-
+const PORT = process.env.PORT || 5555;
 mongoose
-  .connect(DbUrl)
+  .connect(process.env.CONNECTION_URL)
   .then(() => {
     console.log("Connected to the database");
     app.listen(PORT, () => {
