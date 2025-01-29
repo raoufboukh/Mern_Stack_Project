@@ -12,7 +12,12 @@ app.use(express.json());
 
 // Middelware for handling CORS POLICY
 // option 1: allow all origins with default of cors(*)
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://mern-stack-project-hazel.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 // option 2: allow custom origins
 // app.use(cors({
